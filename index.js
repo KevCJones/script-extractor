@@ -19,4 +19,5 @@ module.exports = function (htmlFile, prefix) {
 	});
 	return scripts;
 };
+module.exports.pattern = SCRIPT_RE;
 

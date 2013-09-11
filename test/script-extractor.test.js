@@ -42,5 +42,9 @@ describe('script-extractor', function () {
 				return prefix + val;
 			})
 		)
-	})
+	});
+
+	it('exposes the script pattern', function () {
+		expect(scriptExtractor.pattern).to.be.a(RegExp);
+	});
 });

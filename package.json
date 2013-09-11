@@ -1,6 +1,6 @@
 {
   "name": "script-extractor",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Extract script sources from a html file to use in uglify task",
   "main": "index.js",
   "scripts": {

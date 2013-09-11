@@ -1,14 +1,16 @@
-grunt-script-extractor
-----------------------
+script-extractor
+----------------
 
 Extract the script sources from a html file and pass them to uglify task.
+
+`npm install script-extractor --save-dev`
 
 example `Gruntfile.js`:
 ```JavaScript
 module.exports = function (grunt) {
 	'use strict';
 
-	var scriptExtractor = require('grunt-script-extractor')(grunt);
+	var scriptExtractor = require('script-extractor');
 
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),

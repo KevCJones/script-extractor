@@ -1,8 +1,9 @@
 /**
- *
+ * Extract script tags from html file and return an array of
+ * the src-attributes
  */
 
-'use strict'
+'use strict';
 
 var fs = require('fs');
 

@@ -41,7 +41,7 @@ describe('script-extractor', function () {
 			expected.map(function (val) {
 				return prefix + val;
 			})
-		)
+		);
 	});
 
 	it('exposes the script pattern', function () {

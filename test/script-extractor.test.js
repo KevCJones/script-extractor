@@ -2,7 +2,7 @@
 
 'use strict';
 
-var expect = require('expect.js');
+var chai = require('chai').should();
 
 var scriptExtractor = require('../index.js');
 
@@ -29,15 +29,15 @@ describe('script-extractor', function () {
 	it('extracts the correct src values', function () {
 		var scripts = scriptExtractor(__dirname + '/test.html');
 
-		expect(scripts.length).to.be(expected.length);
-		expect(scripts).to.eql(expected);
+		scripts.should.have.length(expected.length);
+		scripts.should.eql(expected);
 	});
 
 	it('applies prefixes', function () {
 		var prefix = '/prefix/to/';
 		var scripts = scriptExtractor(__dirname + '/test.html', prefix);
 
-		expect(scripts).to.eql(
+		scripts.should.eql(
 			expected.map(function (val) {
 				return prefix + val;
 			})
@@ -45,6 +45,6 @@ describe('script-extractor', function () {
 	});
 
 	it('exposes the script pattern', function () {
-		expect(scriptExtractor.pattern).to.be.a(RegExp);
+		scriptExtractor.pattern.should.be.an.instanceof(RegExp);
 	});
 });

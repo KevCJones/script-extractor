@@ -17,6 +17,6 @@
   "readmeFilename": "README.md",
   "devDependencies": {
     "mocha": "~1.12.1",
-    "expect.js": "~0.2.0"
+    "chai": "~1.8.0"
   }
 }

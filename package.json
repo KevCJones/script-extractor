@@ -1,7 +1,7 @@
 {
   "name": "script-extractor",
-  "version": "0.0.4",
-  "description": "Extract script sources from a html file to use in uglify task",
+  "version": "0.0.41",
+  "description": "Extract script[src] and link[hrefs] into an array to be used like processHTML for tasts like grunt-concat with processHTML",
   "main": "index.js",
   "scripts": {
     "test": "mocha -R spec"
@@ -12,7 +12,7 @@
     "scripts",
     "uglify"
   ],
-  "author": "Jan Pieter Waagmeester <jieter@jieter.nl>",
+  "author": "Jan Pieter Waagmeester <jieter@jieter.nl> Extended by Kevin Jones <him@kevincjones.co.uk>",
   "license": "MIT",
   "readmeFilename": "README.md",
   "devDependencies": {

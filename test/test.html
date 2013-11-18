@@ -3,20 +3,30 @@
 <head>
 	<meta charset="utf-8">
 	<title>Test for script-extractor</title>
-	<link rel="stylesheet" type="text/css" href="/css/default.css" media="screen" />
 
+	<!-- extract:css styles.head.css -->
+	<link rel="stylesheet" type="text/css" href="css/default.css">
+	<link rel="stylesheet" type="text/css" href="css/override.css" >
+	<link rel="stylesheet" type="text/css" media="screen" href="css/override2.css" />
+	<!-- /extract -->
+
+	<!-- extract:js head.script.js -->
 	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 	<script type="text/javascript" src="js/lib/underscore-min.js"></script>
 	<script src="js/lib/raphael-min.js"></script>
 	<script type="text/javascript" src="js/lib/morris-0.4.3.js"></script>
+	<!-- /extract -->
 </head>
 <body>
 	<script src="js/app.js"></script>
 
+
+	<!-- extract:js body.script.js -->
 	<script src="js/lib/Leaflet/leaflet-src.js"></script>
 	<script src="js/lib/Leaflet.draw/leaflet.draw-src.js"></script>
 	<script src="js/lib/Polyline.encoded.js"></script>
 	<script src="js/geoUtil.js"></script>
+	<!-- /extract -->
 
 	<script src="js/lib/jquery-1.10.2.min.js"></script>
 	<script src="js/lib/jquery.scrollTo.js"></script>

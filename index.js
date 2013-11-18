@@ -18,8 +18,8 @@ var regextract = /<!--\s*extract:(\[?[\w-]+\]?)(?::(\w+))?(?:\s*([^\s]+)\s*-->)*
 var regend = /(?:<!--\s*)*\/extract\s*-->/;
 //<script src=""></script>
 var SCRIPT_RE = /<script(.*)? src="(.*)"><\/script>/g;
-//	<link rel="stylesheet" href="css/base.css">
-var LINK_RE = /<link(.*)? href="(.*)">/g;
+//	<link rel="stylesheet" href="css/base.css">  - this isn't very good yet
+var LINK_RE = /<link(.*)? href="(.*)"(.*)>/g;
 
 
 module.exports = function (htmlFile, prefix) {
@@ -32,6 +32,7 @@ module.exports = function (htmlFile, prefix) {
 	//start the array we're sending back out
 	var sections = [];
 	var inside = false;
+	var block;
 
 	//lets collect all the sections we wrapped in the HTML
 	lines.forEach(function (line) {
@@ -39,8 +40,10 @@ module.exports = function (htmlFile, prefix) {
 		var extract = line.match(regextract);
     	var endextract = regend.test(line);
     	var attr;
+    	
 
     	//if we are at the extract block start
+
     	if(extract)
     	{
     		inside = true;
@@ -53,22 +56,31 @@ module.exports = function (htmlFile, prefix) {
 		        indent: /^\s*/.exec(line)[0],
 		        srcs: []
 		    };
+
     	}
 
     	//if we're inside and block exists
     	if (inside && block) {
     		var src = "";
+
+		
     		switch(block.type)
     		{
     			case 'attr' : //not what we're after
     			break;
     			case 'js'	: //src is king
-    				src = prefix + line.split(SCRIPT_RE)[2];
+    				src = line.split(SCRIPT_RE)[2];
     			break;
     			case 'css'	: //href is king
+    				src = line.split(LINK_RE)[2];
     			break;
     		}
-      		block.srcs.push(src);
+    		
+    		if(src !== undefined)
+    		{
+      			block.srcs.push(prefix + src);
+      		}
+
     	}
 
     	//if we were inside and now we're at the end of an extract block
@@ -81,5 +93,6 @@ module.exports = function (htmlFile, prefix) {
 
 	return sections;
 };
-module.exports.pattern = SCRIPT_RE;
+module.exports.scriptPattern = SCRIPT_RE;
+module.exports.linkPattern = LINK_RE;
 

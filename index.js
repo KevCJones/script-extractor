@@ -8,14 +8,14 @@
 var fs = require('fs');
 
 /*
-   * <!-- extract:<type>[:target] [output] -->
+   * <!-- build:<type>[:target] [output] -->
    * - type (required) js, css
    * - target|attribute i.e. dev, release or [href] [src]
    * - output (optional) i.e. script.min.js
 */
-var regextract = /<!--\s*extract:(\[?[\w-]+\]?)(?::(\w+))?(?:\s*([^\s]+)\s*-->)*/;
-// <!-- /extract -->
-var regend = /(?:<!--\s*)*\/extract\s*-->/;
+var regextract = /<!--\s*build:(\[?[\w-]+\]?)(?::(\w+))?(?:\s*([^\s]+)\s*-->)*/;
+// <!-- /build -->
+var regend = /(?:<!--\s*)*\/build\s*-->/;
 //<script src=""></script>
 var SCRIPT_RE = /<script(.*)? src="(.*)"><\/script>/g;
 //	<link rel="stylesheet" href="css/base.css">  - this isn't very good yet
